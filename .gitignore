@@ -1,0 +1,50 @@
+# Laravel
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+
+# Environment files
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+
+# Composer
+composer.lock
+
+# NPM
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build files
+/public/build
+/public/hot
+
+# Logs
+/storage/logs/*
+*.log
+
+# Cache
+/bootstrap/cache/*.php
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# IDEs & Editors
+/.idea
+/.vscode
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+/phpunit.xml
+
+# Misc
+npm-debug.log
+yarn-error.log
