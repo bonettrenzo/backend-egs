@@ -56,6 +56,19 @@ class ProductController extends Controller
         return response()->json($product, 200);
     }
 
+    public function search(Request $request) {
+        $param = $request->query('q');
+
+        if (!$param) {
+        return response()->json(['error' => 'Parametro de busqueda requerido'], 400);
+        }
+
+        $searchService = new \App\Services\ProductSearchService();
+        $results = $searchService->search($param);
+
+        return response()->json($results, 200);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
