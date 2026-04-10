@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Dtos\ProductSearchResource;
 
 class ProductController extends Controller
 {
@@ -66,11 +67,11 @@ class ProductController extends Controller
         $searchService = new \App\Services\ProductSearchService();
         $results = $searchService->search($param);
 
-        if(!$results["hits"]) {
-            return response()->json(['error' => 'No se encontraron resultados'], 404);
-        }
+        $products = array_map(function ($hit) {
+            return ProductSearchResource::fromElastic($hit)->toArray();
+        }, $results['hits']['hits']);
 
-        return response()->json($results["hits"], 200);
+        return response()->json($products, 200);
     }
 
     /**
