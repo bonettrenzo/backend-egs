@@ -3,10 +3,11 @@
 namespace App\Services;
 
 use Elasticsearch\ClientBuilder; 
+use App\Interface\IProductSearchService;
 
-class ProductSearchService 
+class ProductSearchService implements IProductSearchService
 {
-    public function search(string $query) 
+    public function search(string $query)
     {
         $client = ClientBuilder::create()
             ->setHosts([config('services.elasticsearch.host')])
@@ -28,4 +29,5 @@ class ProductSearchService
 
         return $client->search($params);
     }
+    
 }
