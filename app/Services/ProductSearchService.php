@@ -8,7 +8,6 @@ class ProductSearchService
 {
     public function search(string $query) 
     {
-        // Ahora sí, esta clase será reconocida
         $client = ClientBuilder::create()
             ->setHosts([config('services.elasticsearch.host')])
             ->build();
@@ -19,8 +18,9 @@ class ProductSearchService
                 'query' => [
                     'multi_match' => [
                         'query'     => $query,
-                        'fields'    => ['nombre^3', 'descripcion'],
+                        'fields'    => ['nombre^3', 'descripcion', 'categoria'],
                         'fuzziness' => 'AUTO'
+                        
                     ]
                 ]
             ]
