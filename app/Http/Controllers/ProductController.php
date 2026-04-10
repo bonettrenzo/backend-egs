@@ -66,7 +66,11 @@ class ProductController extends Controller
         $searchService = new \App\Services\ProductSearchService();
         $results = $searchService->search($param);
 
-        return response()->json($results, 200);
+        if(!$results["hits"]) {
+            return response()->json(['error' => 'No se encontraron resultados'], 404);
+        }
+
+        return response()->json($results["hits"], 200);
     }
 
     /**
