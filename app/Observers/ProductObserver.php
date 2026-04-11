@@ -23,6 +23,7 @@ class ProductObserver
         $this->client->index([
             'index' => 'products',
             'id'    => $product->id,
+            'refresh' => true,
             'body'  => $product->toArray()
         ]);
     }
@@ -34,6 +35,7 @@ class ProductObserver
         $this->client->index([
             'index' => 'products',
             'id'    => $product->id,
+            'refresh' => true,
             'body'  => $product->toArray()
         ]);
     }
@@ -45,6 +47,7 @@ class ProductObserver
         try {
             $this->client->delete([
                 'index' => 'products',
+                'refresh' => true,
                 'id'    => $product->id
             ]);
         } catch (\Exception $e) {

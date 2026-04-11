@@ -17,8 +17,8 @@ class ProductSearchService implements IProductSearchService
             'index' => 'products',
             'body'  => [
                 'query' => [
-                    'multi_match' => [
-                        'query'     => $query,
+                    'query_string' => [
+                        'query'     => "*$query*",
                         'fields'    => ['nombre^3', 'descripcion', 'categoria'],
                         'fuzziness' => 'AUTO'
                         
