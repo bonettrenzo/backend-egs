@@ -24,8 +24,10 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'nombre'      => 'sometimes|string|max:150',
+            'descripcion' => 'sometimes|string',
             'precio'      => 'sometimes|numeric|min:0.01',
             'stock'       => 'sometimes|integer|min:0',
+            'categoria'   => 'sometimes|string|max:80',
         ];
     }
 }
