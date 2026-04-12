@@ -52,13 +52,15 @@ export const API_URL = '[https://tu-url-de-ngrok.ngrok-free.app/api](https://tu-
 ### Endpoints de la API
 ## Gestión de Productos (MySQL)
 
-| Método | EndPoint | Descripción |
-| :--- | :--- |
-| **GET** | /api/products | Lista todos los productos disponibles. |
-| **POST** | /api/products | Crea un producto (Valida vía StoreProductRequest). |
-| **GET** | /api/products/{id} | Obtiene el detalle de un producto específico. |
-| **DELETE** | /api/products/{id} | Elimina el producto de MySQL y Elasticsearch. |
-| **GET** | /API/products/search?q="" | Servicio que filtra por cohicidencia usando ELASTICSEARCH |
+### 📡 Endpoints de la API
+
+| Método | Endpoint | Descripción |
+| :--- | :--- | :--- |
+| `GET` | `/api/products` | Lista todos los productos disponibles en MySQL. |
+| `POST` | `/api/products` | Crea un producto (Valida vía `StoreProductRequest` y sincroniza con ES). |
+| `GET` | `/api/products/{id}` | Obtiene el detalle técnico de un producto específico. |
+| `DELETE` | `/api/products/{id}` | Elimina el producto de MySQL y del índice de Elasticsearch. |
+| `GET` | `/api/products/search?q={t}` | **Búsqueda Pro:** Filtra por coincidencia semántica usando **Elasticsearch**. |
 
 ## Motor de Búsqueda (Elasticsearch)
 Endpoint: ** GET /api/products/search?q={termino}** 
