@@ -23,7 +23,7 @@ class ProductSearchService implements IProductSearchService
                 'query' => [
                     'query_string' => [
                         'query'     => "*$query*",
-                        'fields'    => ['nombre^3', 'descripcion', 'categoria'],
+                        'fields'    => ['nombre^500', 'descripcion^300', 'categoria^100'],
                         'fuzziness' => 'AUTO'
                         
                     ]
