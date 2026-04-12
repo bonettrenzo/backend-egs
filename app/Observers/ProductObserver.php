@@ -10,9 +10,13 @@ class ProductObserver
     protected $client;
 
     public function __construct() 
-    {
+    {   
+        $apiKey = config('services.elasticsearch.api_key');
+        list($id, $key) = explode(':', base64_decode($apiKey));
+
         $this->client = ClientBuilder::create()
             ->setHosts([config('services.elasticsearch.host')])
+            ->setApiKey($id, $key)
             ->build();
     }
 

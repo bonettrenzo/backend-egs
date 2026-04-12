@@ -29,7 +29,8 @@ return [
     ],
 
     'elasticsearch' => [
-    'host' => env('ELASTICSEARCH_HOST', 'http://localhost:9200'),
+        'host' => env('ELASTICSEARCH_HOST'),
+        'api_key' => env('ELASTICSEARCH_API_KEY'),
     ],
 
     'slack' => [
